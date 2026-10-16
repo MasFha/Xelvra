@@ -198,3 +198,20 @@ Third-party components retain their own license obligations. **No project-level 
 ---
 
 **Repository:** [MasFha/Xelvra](https://github.com/MasFha/Xelvra) · **Package:** `com.mdevz.xelvra` · **Version:** `0.1.0` · **Status:** In development
+
+## App Screenshots
+
+<table>
+  <tr>
+    <th>Launcher</th>
+    <th>Home</th>
+    <th>Log</th>
+    <th>Settings</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/screenshots/Launcher.png" alt="Xelvra Launcher" width="200"></td>
+    <td align="center"><img src="docs/screenshots/Home.png" alt="Xelvra Home" width="200"></td>
+    <td align="center"><img src="docs/screenshots/Log.png" alt="Xelvra Log" width="200"></td>
+    <td align="center"><img src="docs/screenshots/Settings.png" alt="Xelvra Settings" width="200"></td>
+  </tr>
+</table>
