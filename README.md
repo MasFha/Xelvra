@@ -10,10 +10,10 @@
     <th>Settings</th>
   </tr>
   <tr>
-    <td align="center"><img src="docs/screenshots/Launcher.png" alt="Xelvra Launcher" width="200"></td>
-    <td align="center"><img src="docs/screenshots/Home.png" alt="Xelvra Home" width="200"></td>
-    <td align="center"><img src="docs/screenshots/Log.png" alt="Xelvra Log" width="200"></td>
-    <td align="center"><img src="docs/screenshots/Settings.png" alt="Xelvra Settings" width="200"></td>
+    <td align="center"><img src="docs/screenshots/Launcher.png" alt="Xelvra Launcher" height="260"></td>
+    <td align="center"><img src="docs/screenshots/Home.png" alt="Xelvra Home" height="260"></td>
+    <td align="center"><img src="docs/screenshots/Log.png" alt="Xelvra Log" height="260"></td>
+    <td align="center"><img src="docs/screenshots/Settings.png" alt="Xelvra Settings" height="260"></td>
   </tr>
 </table>
 
