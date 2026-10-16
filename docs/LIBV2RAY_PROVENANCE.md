@@ -59,3 +59,23 @@ Not yet established:
 This document does not assert full license compliance.
 
 See `LICENSE` and `THIRD_PARTY_NOTICES.md`.
+
+## Access to candidate upstream source
+
+Upstream source:
+https://github.com/2dust/AndroidLibXrayLite
+
+Candidate revision:
+d0c6c4ae1b09c912070c8288bd0dbcc2e492ac29
+
+Retrieval commands:
+
+    git clone https://github.com/2dust/AndroidLibXrayLite.git
+    cd AndroidLibXrayLite
+    git checkout --detach d0c6c4ae1b09c912070c8288bd0dbcc2e492ac29
+
+This candidate matches identified dependency versions.
+It is not verified as the exact source of the bundled AAR.
+
+This reference alone does not establish compliance with
+LGPL-3.0, MPL-2.0, or other applicable licenses.
