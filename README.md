@@ -1,5 +1,22 @@
 # Xelvra
 
+## App Screenshots
+
+<table>
+  <tr>
+    <th>Launcher</th>
+    <th>Home</th>
+    <th>Log</th>
+    <th>Settings</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/screenshots/Launcher.png" alt="Xelvra Launcher" width="200"></td>
+    <td align="center"><img src="docs/screenshots/Home.png" alt="Xelvra Home" width="200"></td>
+    <td align="center"><img src="docs/screenshots/Log.png" alt="Xelvra Log" width="200"></td>
+    <td align="center"><img src="docs/screenshots/Settings.png" alt="Xelvra Settings" width="200"></td>
+  </tr>
+</table>
+
 **An Android VPN client built with Kotlin and powered by an embedded Xray runtime.**
 
 ![Android](https://img.shields.io/badge/Android-7.0%2B-3DDC84?logo=android&logoColor=white) ![Kotlin](https://img.shields.io/badge/Kotlin-2.1.20-7F52FF?logo=kotlin&logoColor=white) ![Version](https://img.shields.io/badge/version-0.1.0-blue) ![Status](https://img.shields.io/badge/status-in%20development-orange)
@@ -198,20 +215,3 @@ Third-party components retain their own license obligations. **No project-level 
 ---
 
 **Repository:** [MasFha/Xelvra](https://github.com/MasFha/Xelvra) · **Package:** `com.mdevz.xelvra` · **Version:** `0.1.0` · **Status:** In development
-
-## App Screenshots
-
-<table>
-  <tr>
-    <th>Launcher</th>
-    <th>Home</th>
-    <th>Log</th>
-    <th>Settings</th>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screenshots/Launcher.png" alt="Xelvra Launcher" width="200"></td>
-    <td align="center"><img src="docs/screenshots/Home.png" alt="Xelvra Home" width="200"></td>
-    <td align="center"><img src="docs/screenshots/Log.png" alt="Xelvra Log" width="200"></td>
-    <td align="center"><img src="docs/screenshots/Settings.png" alt="Xelvra Settings" width="200"></td>
-  </tr>
-</table>
