@@ -1,0 +1,83 @@
+name: Bug Report
+description: Report a reproducible problem in Xelvra
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve Xelvra.
+        Never include server passwords, UUIDs, private keys,
+        access tokens, complete profile URIs, or unredacted logs.
+        Security vulnerabilities must be reported privately.
+  - type: input
+    id: version
+    attributes:
+      label: Xelvra version
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: input
+    id: android
+    attributes:
+      label: Android version
+      placeholder: "Android 16"
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device model
+      placeholder: "Manufacturer and model"
+    validations:
+      required: true
+  - type: dropdown
+    id: protocol
+    attributes:
+      label: Protocol
+      options:
+        - VMess
+        - VLESS
+        - Trojan
+        - Shadowsocks
+        - Not applicable
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Explain how to reproduce the problem.
+      placeholder: "1. Open Xelvra\n2. Select a profile\n3. Start VPN"
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Redacted logs or screenshots
+      description: Remove all sensitive information before posting.
+      render: text
+    validations:
+      required: false
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Submission checklist
+      options:
+        - label: I have removed credentials and private configuration data.
+          required: true
+        - label: I have checked for existing reports of this issue.
+          required: true
