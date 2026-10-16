@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+    <application android:name=".XelvraApplication" android:allowBackup="false" android:dataExtractionRules="@xml/data_extraction_rules" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:supportsRtl="true" android:theme="@style/Theme.Xelvra">
+        <service android:name="androidx.appcompat.app.AppLocalesMetadataHolderService" android:enabled="false" android:exported="false">
+            <meta-data android:name="autoStoreLocales" android:value="true" />
+        </service>
+        <receiver android:name=".core.vpn.BootReceiver" android:enabled="true" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <service android:name=".core.vpn.XelvraVpnService" android:exported="false" android:foregroundServiceType="specialUse" android:permission="android.permission.BIND_VPN_SERVICE">
+            <intent-filter>
+                <action android:name="android.net.VpnService" />
+            </intent-filter>
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="vpn" />
+        </service>
+        <activity android:name=".ui.settings.routing.SmartRoutingActivity" android:exported="false" android:screenOrientation="portrait" />
+        <activity android:name=".ui.settings.assets.AssetFilesActivity" android:exported="false" android:screenOrientation="portrait" />
+        <activity android:name=".ui.settings.perapp.PerAppVpnActivity" android:exported="false" android:screenOrientation="portrait" />
+        <activity android:name=".ui.editor.ProfileEditorActivity" android:exported="false" android:screenOrientation="portrait" />
+        <provider android:name="androidx.core.content.FileProvider" android:authorities="${applicationId}.crashreports" android:exported="false" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/crash_report_paths" />
+        </provider>
+        <activity android:name=".CrashReportActivity" android:exported="false" android:screenOrientation="portrait" />
+        <activity android:name=".LauncherActivity" android:exported="true" android:theme="@style/Theme.Xelvra.Starting" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" android:exported="false" android:screenOrientation="portrait">
+            </activity>
+    </application>
+</manifest>

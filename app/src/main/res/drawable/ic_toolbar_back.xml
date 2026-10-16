@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Slot navigation MaterialToolbar = 48dp.
+        Circle visual = 40dp, sehingga ada inset 4dp di setiap sisi.
+    -->
+    <item
+        android:left="4dp"
+        android:top="4dp"
+        android:right="4dp"
+        android:bottom="4dp"
+        android:drawable="@drawable/bg_toolbar_navigation_circle" />
+
+    <!--
+        Arrow = 24dp.
+        (48 - 24) / 2 = 12dp.
+    -->
+    <item
+        android:left="12dp"
+        android:top="12dp"
+        android:right="12dp"
+        android:bottom="12dp"
+        android:drawable="@drawable/ic_arrow_back" />
+
+</layer-list>

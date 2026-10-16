@@ -1,0 +1,16 @@
+-keepnames class com.mdevz.xelvra.XelvraApplication
+-keepnames class com.mdevz.xelvra.LauncherActivity
+-keepnames class com.mdevz.xelvra.MainActivity
+-keepnames class com.mdevz.xelvra.core.vpn.BootReceiver
+-keepnames class com.mdevz.xelvra.core.vpn.XelvraVpnService
+-keepnames class com.mdevz.xelvra.ui.editor.ProfileEditorActivity
+-keepnames class com.mdevz.xelvra.ui.settings.assets.AssetFilesActivity
+-keepnames class com.mdevz.xelvra.ui.settings.perapp.PerAppVpnActivity
+-keepnames class com.mdevz.xelvra.ui.home.widget.TrafficChartView
+-keepattributes SourceFile,LineNumberTable
+-keep enum com.mdevz.xelvra.data.model.Protocol { *; }
+-keep enum com.mdevz.xelvra.data.local.PerAppVpnMode { *; }
+-keep enum com.mdevz.xelvra.data.local.AppTheme { *; }
+-keep enum com.mdevz.xelvra.data.local.RoutingMode { *; }
+-keep enum com.mdevz.xelvra.data.local.DomainStrategy { *; }
+-keep enum com.mdevz.xelvra.core.xray.XrayAssetManager$Source { *; }

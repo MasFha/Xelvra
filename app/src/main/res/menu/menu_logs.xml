@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<menu xmlns:ns0="http://schemas.android.com/apk/res/android" xmlns:ns1="http://schemas.android.com/apk/res-auto">
+
+    <item ns0:id="@+id/action_copy_logs" ns0:icon="@drawable/ic_copy" ns0:title="@string/logs_copy_all" ns1:showAsAction="always" ns1:actionLayout="@layout/toolbar_action_copy" />
+
+    <item ns0:id="@+id/action_clear_logs" ns0:icon="@drawable/ic_delete" ns0:title="@string/logs_clear" ns1:showAsAction="always" ns1:actionLayout="@layout/toolbar_action_clear" />
+
+</menu>

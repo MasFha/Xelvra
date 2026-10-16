@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="traffic_upload">#2E7D32</color>
+    <color name="traffic_download">#1565C0</color>
+    <color name="traffic_grid">#33757575</color>
+</resources>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingStart="24dp" android:paddingEnd="24dp" android:paddingTop="8dp" android:paddingBottom="12dp">
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/settings_mux_dialog_description" android:textAppearance="?attr/textAppearanceBodyMedium" android:textColor="?attr/colorOnSurfaceVariant" android:layout_marginBottom="20dp" />
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/settings_mux_concurrency" android:textAppearance="?attr/textAppearanceTitleSmall" android:textColor="?attr/colorOnSurface" android:layout_marginBottom="8dp" />
+
+    <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="60dp" app:cardCornerRadius="30dp" app:cardElevation="0dp" app:cardBackgroundColor="?attr/colorSurfaceContainerHigh" app:strokeColor="?attr/colorOutlineVariant" app:strokeWidth="1dp">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center_vertical" android:orientation="horizontal" android:padding="6dp">
+
+            <ImageButton android:id="@+id/mux_tcp_minus" android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/ic_mux_minus" android:background="@drawable/bg_mux_stepper_circle" android:tint="?attr/colorOnPrimary" android:scaleType="centerInside" android:padding="12dp" android:contentDescription="Kurangi" /><TextView android:id="@+id/mux_tcp_value" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="22sp" android:textStyle="bold" android:textColor="?attr/colorOnSurface" />
+
+            <ImageButton android:id="@+id/mux_tcp_plus" android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/ic_mux_plus" android:background="@drawable/bg_mux_stepper_circle" android:tint="?attr/colorOnPrimary" android:scaleType="centerInside" android:padding="12dp" android:contentDescription="Tambah" /></LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:layout_marginBottom="8dp" android:text="@string/settings_mux_xudp_concurrency" android:textAppearance="?attr/textAppearanceTitleSmall" android:textColor="?attr/colorOnSurface" />
+
+    <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="60dp" app:cardCornerRadius="30dp" app:cardElevation="0dp" app:cardBackgroundColor="?attr/colorSurfaceContainerHigh" app:strokeColor="?attr/colorOutlineVariant" app:strokeWidth="1dp">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center_vertical" android:orientation="horizontal" android:padding="6dp">
+
+            <ImageButton android:id="@+id/mux_xudp_minus" android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/ic_mux_minus" android:background="@drawable/bg_mux_stepper_circle" android:tint="?attr/colorOnPrimary" android:scaleType="centerInside" android:padding="12dp" android:contentDescription="Kurangi" /><TextView android:id="@+id/mux_xudp_value" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:textSize="22sp" android:textStyle="bold" android:textColor="?attr/colorOnSurface" />
+
+            <ImageButton android:id="@+id/mux_xudp_plus" android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/ic_mux_plus" android:background="@drawable/bg_mux_stepper_circle" android:tint="?attr/colorOnPrimary" android:scaleType="centerInside" android:padding="12dp" android:contentDescription="Tambah" /></LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.textfield.TextInputLayout android:id="@+id/mux_udp_layout" style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:hint="@string/settings_mux_udp_443">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView android:id="@+id/mux_udp_dropdown" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="none" android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="28dp" android:orientation="horizontal" android:gravity="end">
+
+        <com.google.android.material.button.MaterialButton android:id="@+id/mux_cancel" style="@style/Widget.Material3.Button.OutlinedButton" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:text="@android:string/cancel" app:cornerRadius="24dp" />
+
+        <com.google.android.material.button.MaterialButton android:id="@+id/mux_save" style="@style/Widget.Material3.Button" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:layout_marginStart="12dp" android:text="@string/settings_mux_dialog_save" app:cornerRadius="24dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

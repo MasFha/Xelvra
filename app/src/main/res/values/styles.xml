@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Xelvra" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
+    </style>
+
+
+    <style name="TextAppearance.Xelvra.ToolbarTitle"
+        parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="Theme.Xelvra.Starting"
+        parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">
+            ?attr/colorSurface
+        </item>
+        <item name="windowSplashScreenAnimatedIcon">
+            @drawable/ic_launcher
+        </item>
+        <item name="postSplashScreenTheme">
+            @style/Theme.Xelvra
+        </item>
+    </style>
+
+</resources>

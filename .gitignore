@@ -1,0 +1,56 @@
+# Android / Gradle build outputs
+.gradle/
+**/build/
+.externalNativeBuild/
+.cxx/
+
+# Local development
+local.properties
+.idea/
+*.iml
+*.log
+*.hprof
+
+# APK and packaged archives
+*.apk
+*.aab
+*.apks
+*.zip
+*.tar
+*.tar.gz
+
+# Signing credentials and private keys
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+*.asc
+*.mobileprovision
+
+# Secrets and environment configuration
+.env
+.env.*
+!.env.example
+*secret*.properties
+*credentials*.json
+google-services.json
+
+# User data and backups
+profiles_v1.json
+**/backups/
+**/Backups/
+*.bak
+*.backup
+
+# Keep required Xray library
+!app/libs/
+!app/libs/libv2ray.aar
+
+# Historical source backups
+*.bak-*
+*.backup-*
+*.orig
+*.rej
+*~
