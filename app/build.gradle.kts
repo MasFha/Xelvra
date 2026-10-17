@@ -11,8 +11,24 @@ android {
         applicationId = "com.mdevz.xelvra"
         minSdk = 24
         targetSdk = 36
-        versionCode = 1
-        versionName = "0.1.0"
+        val ciRunNumber = providers.gradleProperty("ciRunNumber").orNull
+            ?.let { raw ->
+                require(raw.toLongOrNull() != null) {
+                    "ciRunNumber must be a valid integer"
+                }
+                raw.toLong()
+            }
+
+        versionCode = ciRunNumber?.let {
+            require(it in 1L..2_099_999_998L) {
+                "ciRunNumber is outside the supported range"
+            }
+            (it + 1L).toInt()
+        } ?: 1
+
+        versionName = ciRunNumber?.let {
+            "0.1.0+build.$it"
+        } ?: "0.1.0"
 
         ndk {
             abiFilters += listOf("armeabi-v7a", "arm64-v8a")
