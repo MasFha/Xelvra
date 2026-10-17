@@ -28,8 +28,27 @@ android {
         jvmTarget = "17"
     }
 
+    signingConfigs {
+        create("xelvraRelease") {
+            val keystorePath = System.getenv("XELVRA_KEYSTORE_PATH")
+            val keystorePassword = System.getenv("XELVRA_STORE_PASSWORD")
+            val signingKeyPassword = System.getenv("XELVRA_KEY_PASSWORD")
+
+            if (!keystorePath.isNullOrBlank() &&
+                !keystorePassword.isNullOrBlank() &&
+                !signingKeyPassword.isNullOrBlank()
+            ) {
+                storeFile = file(keystorePath)
+                storePassword = keystorePassword
+                keyAlias = "xelvra"
+                keyPassword = signingKeyPassword
+            }
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig = signingConfigs.getByName("xelvraRelease")
             isMinifyEnabled = true
             isShrinkResources = true
 
