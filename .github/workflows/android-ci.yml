@@ -47,6 +47,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: xelvra-debug-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
-          retention-days: 7
+          retention-days: 90
