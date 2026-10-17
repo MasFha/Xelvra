@@ -1,0 +1,31 @@
+version: 2.1
+
+jobs:
+  android-build:
+    docker:
+      - image: cimg/android:2026.08.1
+    resource_class: medium
+    steps:
+      - checkout
+
+      - run:
+          name: Check Java and Android SDK
+          command: |
+            java -version
+            sdkmanager --version
+            sdkmanager "platforms;android-36" "build-tools;36.0.0"
+
+      - run:
+          name: Build Xelvra Debug APK
+          command: |
+            chmod +x ./gradlew
+            bash ./gradlew :app:assembleDebug --no-daemon --console=plain
+
+      - store_artifacts:
+          path: app/build/outputs/apk/debug/app-debug.apk
+          destination: xelvra-debug.apk
+
+workflows:
+  build:
+    jobs:
+      - android-build
