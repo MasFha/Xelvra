@@ -232,6 +232,14 @@ class ProfileEditorActivity : AppCompatActivity() {
         val secondaryLayout =
             findViewById<TextInputLayout>(R.id.auth_secondary_layout)
 
+        val flowLayout =
+            findViewById<TextInputLayout>(R.id.vless_flow_layout)
+
+        val methodLayout =
+            findViewById<TextInputLayout>(
+                R.id.shadowsocks_method_layout
+            )
+
         val primaryInput =
             findViewById<TextInputEditText>(R.id.input_auth_primary)
 
@@ -240,6 +248,8 @@ class ProfileEditorActivity : AppCompatActivity() {
 
         primaryLayout.visibility = View.VISIBLE
         secondaryLayout.visibility = View.GONE
+        flowLayout.visibility = View.GONE
+        methodLayout.visibility = View.GONE
 
         primaryLayout.error = null
         secondaryLayout.error = null
@@ -254,8 +264,7 @@ class ProfileEditorActivity : AppCompatActivity() {
 
             Protocol.VLESS -> {
                 primaryLayout.setHint(R.string.uuid)
-                secondaryLayout.setHint(R.string.flow)
-                secondaryLayout.visibility = View.VISIBLE
+                flowLayout.visibility = View.VISIBLE
             }
 
             Protocol.TROJAN -> {
@@ -263,7 +272,8 @@ class ProfileEditorActivity : AppCompatActivity() {
             }
 
             Protocol.SHADOWSOCKS -> {
-                primaryLayout.setHint(R.string.method)
+                primaryLayout.visibility = View.GONE
+                methodLayout.visibility = View.VISIBLE
                 secondaryLayout.setHint(R.string.password)
                 secondaryLayout.visibility = View.VISIBLE
             }
@@ -271,6 +281,46 @@ class ProfileEditorActivity : AppCompatActivity() {
     }
 
     private fun configureDropdowns() {
+        configureDropdown(
+            R.id.input_shadowsocks_method,
+            resources.getStringArray(
+                R.array.editor_shadowsocks_method
+            ).toList(),
+            "aes-256-gcm"
+        )
+
+        configureDropdown(
+            R.id.input_vless_flow,
+            resources.getStringArray(
+                R.array.editor_vless_flow
+            ).toList(),
+            ""
+        )
+
+        configureDropdown(
+            R.id.input_transport_mode,
+            resources.getStringArray(
+                R.array.editor_xhttp_mode
+            ).toList(),
+            "auto"
+        )
+
+        configureDropdown(
+            R.id.input_alpn,
+            resources.getStringArray(
+                R.array.editor_alpn
+            ).toList(),
+            ""
+        )
+
+        configureDropdown(
+            R.id.input_fingerprint,
+            resources.getStringArray(
+                R.array.editor_fingerprint
+            ).toList(),
+            ""
+        )
+
         configureDropdown(
             R.id.input_transport,
             listOf(
@@ -520,7 +570,7 @@ class ProfileEditorActivity : AppCompatActivity() {
             Protocol.VLESS -> {
                 ProtocolOptions.VLess(
                     uuid = text(R.id.input_auth_primary),
-                    flow = text(R.id.input_auth_secondary)
+                    flow = text(R.id.input_vless_flow)
                 )
             }
 
@@ -532,7 +582,7 @@ class ProfileEditorActivity : AppCompatActivity() {
 
             Protocol.SHADOWSOCKS -> {
                 ProtocolOptions.Shadowsocks(
-                    method = text(R.id.input_auth_primary),
+                    method = text(R.id.input_shadowsocks_method),
                     password = text(R.id.input_auth_secondary)
                 )
             }
@@ -685,7 +735,7 @@ class ProfileEditorActivity : AppCompatActivity() {
                 )
 
                 setText(
-                    R.id.input_auth_secondary,
+                    R.id.input_vless_flow,
                     options.flow
                 )
             }
@@ -699,7 +749,7 @@ class ProfileEditorActivity : AppCompatActivity() {
 
             is ProtocolOptions.Shadowsocks -> {
                 setText(
-                    R.id.input_auth_primary,
+                    R.id.input_shadowsocks_method,
                     options.method
                 )
 
@@ -875,9 +925,19 @@ class ProfileEditorActivity : AppCompatActivity() {
         viewId: Int,
         value: String
     ) {
-        findViewById<TextInputEditText>(
-            viewId
-        ).setText(value)
+        when (val view = findViewById<View>(viewId)) {
+            is MaterialAutoCompleteTextView -> {
+                view.setText(value, false)
+            }
+
+            is TextInputEditText -> {
+                view.setText(value)
+            }
+
+            else -> {
+                error("Unsupported editor field: $viewId")
+            }
+        }
     }
 
     private fun clearErrors() {

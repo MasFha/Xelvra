@@ -6,6 +6,7 @@ on:
       - main
       - develop
       - ci/automatic-android-releases
+      - feature/profile-editor
   pull_request:
     branches:
       - main
