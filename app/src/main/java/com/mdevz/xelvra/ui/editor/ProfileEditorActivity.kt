@@ -977,6 +977,9 @@ class ProfileEditorActivity : AppCompatActivity() {
             ProfileValidation.Error.METHOD_REQUIRED ->
                 R.string.validation_method_required
 
+            ProfileValidation.Error.PROTOCOL_OPTIONS_MISMATCH ->
+                R.string.validation_protocol_options_mismatch
+
             ProfileValidation.Error.TRANSPORT_UNSUPPORTED ->
                 R.string.validation_transport_unsupported
 
@@ -1059,6 +1062,9 @@ class ProfileEditorActivity : AppCompatActivity() {
                 }
 
             ProfileValidation.Field.METHOD ->
+                R.id.auth_primary_layout
+
+            ProfileValidation.Field.PROTOCOL_OPTIONS ->
                 R.id.auth_primary_layout
 
             ProfileValidation.Field.TRANSPORT ->

@@ -1,5 +1,6 @@
 package com.mdevz.xelvra.protocol.validator
 
+import com.mdevz.xelvra.data.model.Protocol
 import com.mdevz.xelvra.data.model.ProtocolOptions
 import com.mdevz.xelvra.data.model.Security
 import com.mdevz.xelvra.data.model.ServerProfile
@@ -30,6 +31,27 @@ object ProfileValidator {
             return invalid(
                 ProfileValidation.Field.PORT,
                 ProfileValidation.Error.PORT_RANGE
+            )
+        }
+
+        val protocolOptionsMatch = when (profile.protocol) {
+            Protocol.VMESS ->
+                profile.protocolOptions is ProtocolOptions.VMess
+
+            Protocol.VLESS ->
+                profile.protocolOptions is ProtocolOptions.VLess
+
+            Protocol.TROJAN ->
+                profile.protocolOptions is ProtocolOptions.Trojan
+
+            Protocol.SHADOWSOCKS ->
+                profile.protocolOptions is ProtocolOptions.Shadowsocks
+        }
+
+        if (!protocolOptionsMatch) {
+            return invalid(
+                ProfileValidation.Field.PROTOCOL_OPTIONS,
+                ProfileValidation.Error.PROTOCOL_OPTIONS_MISMATCH
             )
         }
 

@@ -28,6 +28,54 @@ class ProfileValidatorTest {
         )
     }
 
+    @Test
+    fun protocolOptionsCompatibility() {
+        val uuid = "123e4567-e89b-42d3-a456-426614174000"
+
+        val cases = listOf(
+            Protocol.VMESS to ProtocolOptions.VMess(uuid),
+            Protocol.VLESS to ProtocolOptions.VLess(uuid),
+            Protocol.TROJAN to ProtocolOptions.Trojan("password"),
+            Protocol.SHADOWSOCKS to ProtocolOptions.Shadowsocks(
+                method = "aes-128-gcm",
+                password = "password"
+            )
+        )
+
+        for ((protocol, options) in cases) {
+            val validProfile = profile(Transport.Tcp).copy(
+                protocol = protocol,
+                protocolOptions = options
+            )
+
+            assertEquals(
+                "Expected valid options for $protocol",
+                ProfileValidation.Valid,
+                ProfileValidator.validate(validProfile)
+            )
+        }
+
+        for (index in cases.indices) {
+            val protocol = cases[index].first
+            val wrongOptions =
+                cases[(index + 1) % cases.size].second
+
+            val invalidProfile = profile(Transport.Tcp).copy(
+                protocol = protocol,
+                protocolOptions = wrongOptions
+            )
+
+            assertEquals(
+                "Expected mismatch for $protocol",
+                ProfileValidation.Invalid(
+                    ProfileValidation.Field.PROTOCOL_OPTIONS,
+                    ProfileValidation.Error.PROTOCOL_OPTIONS_MISMATCH
+                ),
+                ProfileValidator.validate(invalidProfile)
+            )
+        }
+    }
+
     private fun reality() = Security.Reality(
         serverName = "example.com",
         fingerprint = "chrome",

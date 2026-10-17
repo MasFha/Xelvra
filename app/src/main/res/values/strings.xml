@@ -301,6 +301,7 @@
     <string name="validation_uuid_invalid">Invalid UUID</string>
     <string name="validation_password_required">Password is required</string>
     <string name="validation_method_required">Encryption method is required</string>
+    <string name="validation_protocol_options_mismatch">Authentication settings do not match the selected protocol.</string>
     <string name="validation_transport_unsupported">This transport is not supported by the current Xray core. Select another transport.</string>
     <string name="validation_reality_transport_unsupported">REALITY supports TCP, gRPC, or XHTTP transport only.</string>
     <string name="validation_reality_public_key_required">REALITY Public Key is required</string>
