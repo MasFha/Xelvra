@@ -534,33 +534,50 @@ object XrayConfigBuilder {
     private fun buildProtocolSettings(
         profile: ServerProfile
     ): JSONObject {
-        val settings = JSONObject()
-            .put("address", profile.address)
-            .put("port", profile.port)
-
-        when (val options = profile.protocolOptions) {
+        return when (val options = profile.protocolOptions) {
             is ProtocolOptions.VMess -> {
                 require(profile.protocol == Protocol.VMESS) {
                     "VMess options do not match protocol"
                 }
 
-                settings
+                val user = JSONObject()
                     .put("id", options.uuid)
+                    .put("alterId", options.alterId)
                     .put("security", options.encryption)
+
+                JSONObject().put(
+                    "vnext",
+                    JSONArray().put(
+                        JSONObject()
+                            .put("address", profile.address)
+                            .put("port", profile.port)
+                            .put("users", JSONArray().put(user))
+                    )
+                )
             }
 
             is ProtocolOptions.VLess -> {
                 require(profile.protocol == Protocol.VLESS) {
-                    "Vless options do not match protocol"
+                    "VLESS options do not match protocol"
                 }
 
-                settings
+                val user = JSONObject()
                     .put("id", options.uuid)
                     .put("encryption", "none")
 
                 if (options.flow.isNotBlank()) {
-                    settings.put("flow", options.flow)
+                    user.put("flow", options.flow)
                 }
+
+                JSONObject().put(
+                    "vnext",
+                    JSONArray().put(
+                        JSONObject()
+                            .put("address", profile.address)
+                            .put("port", profile.port)
+                            .put("users", JSONArray().put(user))
+                    )
+                )
             }
 
             is ProtocolOptions.Trojan -> {
@@ -568,7 +585,15 @@ object XrayConfigBuilder {
                     "Trojan options do not match protocol"
                 }
 
-                settings.put("password", options.password)
+                JSONObject().put(
+                    "servers",
+                    JSONArray().put(
+                        JSONObject()
+                            .put("address", profile.address)
+                            .put("port", profile.port)
+                            .put("password", options.password)
+                    )
+                )
             }
 
             is ProtocolOptions.Shadowsocks -> {
@@ -576,13 +601,18 @@ object XrayConfigBuilder {
                     "Shadowsocks options do not match protocol"
                 }
 
-                settings
-                    .put("method", options.method)
-                    .put("password", options.password)
+                JSONObject().put(
+                    "servers",
+                    JSONArray().put(
+                        JSONObject()
+                            .put("address", profile.address)
+                            .put("port", profile.port)
+                            .put("method", options.method)
+                            .put("password", options.password)
+                    )
+                )
             }
         }
-
-        return settings
     }
 
     private fun buildStreamSettings(
