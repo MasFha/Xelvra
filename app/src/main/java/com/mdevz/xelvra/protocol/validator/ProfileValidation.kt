@@ -16,6 +16,7 @@ sealed interface ProfileValidation {
         UUID,
         PASSWORD,
         METHOD,
+        TRANSPORT,
         REALITY_PUBLIC_KEY,
         REALITY_SHORT_ID
     }
@@ -27,6 +28,8 @@ sealed interface ProfileValidation {
         UUID_INVALID,
         PASSWORD_REQUIRED,
         METHOD_REQUIRED,
+        TRANSPORT_UNSUPPORTED,
+        REALITY_TRANSPORT_UNSUPPORTED,
         REALITY_PUBLIC_KEY_REQUIRED,
         REALITY_SHORT_ID_REQUIRED
     }

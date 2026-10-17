@@ -3,6 +3,7 @@ package com.mdevz.xelvra.protocol.validator
 import com.mdevz.xelvra.data.model.ProtocolOptions
 import com.mdevz.xelvra.data.model.Security
 import com.mdevz.xelvra.data.model.ServerProfile
+import com.mdevz.xelvra.data.model.Transport
 import java.util.UUID
 
 object ProfileValidator {
@@ -80,7 +81,26 @@ object ProfileValidator {
             }
         }
 
+        if (profile.transport is Transport.Http) {
+            return invalid(
+                ProfileValidation.Field.TRANSPORT,
+                ProfileValidation.Error.TRANSPORT_UNSUPPORTED
+            )
+        }
+
         if (profile.security is Security.Reality) {
+            if (
+                profile.transport !is Transport.Tcp &&
+                profile.transport !is Transport.Grpc &&
+                profile.transport !is Transport.XHttp
+            ) {
+                return invalid(
+                    ProfileValidation.Field.TRANSPORT,
+                    ProfileValidation.Error
+                        .REALITY_TRANSPORT_UNSUPPORTED
+                )
+            }
+
             val reality =
                 profile.security
 

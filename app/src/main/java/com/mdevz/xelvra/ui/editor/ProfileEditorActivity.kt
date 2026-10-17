@@ -945,6 +945,7 @@ class ProfileEditorActivity : AppCompatActivity() {
             R.id.remarks_layout,
             R.id.address_layout,
             R.id.port_layout,
+            R.id.transport_layout,
             R.id.auth_primary_layout,
             R.id.auth_secondary_layout,
             R.id.public_key_layout,
@@ -975,6 +976,13 @@ class ProfileEditorActivity : AppCompatActivity() {
 
             ProfileValidation.Error.METHOD_REQUIRED ->
                 R.string.validation_method_required
+
+            ProfileValidation.Error.TRANSPORT_UNSUPPORTED ->
+                R.string.validation_transport_unsupported
+
+            ProfileValidation.Error
+                .REALITY_TRANSPORT_UNSUPPORTED ->
+                R.string.validation_reality_transport_unsupported
 
             ProfileValidation.Error
                 .REALITY_PUBLIC_KEY_REQUIRED ->
@@ -1052,6 +1060,9 @@ class ProfileEditorActivity : AppCompatActivity() {
 
             ProfileValidation.Field.METHOD ->
                 R.id.auth_primary_layout
+
+            ProfileValidation.Field.TRANSPORT ->
+                R.id.transport_layout
 
             ProfileValidation.Field.REALITY_PUBLIC_KEY ->
                 R.id.public_key_layout
