@@ -214,4 +214,7 @@ Third-party components retain their own license obligations. **No project-level 
 
 ---
 
-**Repository:** [MasFha/Xelvra](https://github.com/MasFha/Xelvra) · **Package:** `com.mdevz.xelvra` · **Version:** `0.1.0` · **Status:** In development
+**Repository:** [MasFha/Xelvra](https://github.com/MasFha/Xelvra) 
+· **Package:** `com.mdevz.xelvra` 
+· **Version:** `0.1.0` 
+· **Status:** In development
